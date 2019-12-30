@@ -1,0 +1,13 @@
+MODULE main
+VAR a1:real; VAR a2:real; VAR a3:real; VAR a4:real; VAR a5:real; VAR a6:real; VAR a7:real;
+INIT a1=2 INIT a2=2 INIT a3=2 INIT a4=2 INIT a5=2 INIT a6=2
+INIT a7=4
+TRANS case a1>a2& a1>a3& a1>a4& a1>a5& a1>a6& a1>a7 : next(a1) >= a1 - 2; TRUE : next(a1) >= a1; esac
+& case a2 >= a1 & a2>a3& a2>a4& a2>a5& a2>a6& a2>a7 : next(a2) >= a2 - 2; TRUE : next(a2) >= a2; esac
+& case a3>=a1& a3>=a2& a3>a4& a3>a5& a3>a6& a3>a7 : next(a3) >= a3 - 2; TRUE : next(a3) >= a3; esac
+& case a4>=a1& a4>=a2& a4>=a3& a4>a5& a4>a6& a4>a7 : next(a4) >= a4 - 2; TRUE : next(a4) >= a4; esac
+& case a5>=a1& a5>=a2& a5>=a3& a5>=a4& a5>a6& a5>a7 : next(a5) >= a5 - 2; TRUE : next(a5) >= a5; esac
+& case a6>=a1& a6>=a2& a6>=a3& a6>=a4& a6>=a5& a6>a7 : next(a6) >= a6 - 2; TRUE : next(a6) >= a6; esac
+& case a7>=a1& a7>=a2& a7>=a3& a7>=a4& a7>=a5& a7>=a6 : next(a7) >= a7 - 2; TRUE : next(a7) >= a7; esac
+TRANS next(a1)+ next(a2)+ next(a3)+ next(a4)+ next(a5)+ next(a6)+ next(a7) = 16
+LTLSPEC G !( a1 > 7)
